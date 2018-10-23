@@ -23,11 +23,11 @@ int  main(int argc ,  char **argv )
 
     for ( j=0; j < 11 ; j++ ){
       fread(get, 1,4,filebmp);
-      for (i=0;i<4;i++) printf("%ld ",4*j+i);  
-      printf("---");
+      for (i=0;i<4;i++) printf("%3ld ",4*j+i);  
+      printf("--- ");
       for ( i=0; i <4; i++ )
 	{
-         printf("%02x ",get[i]);
+         printf("%02x  ",get[i]);
 	    		      }
       if (j==1) {printf("RIFF chunk size=%d",  get[0]+get[1]*256+get[2]*65536+get[3]*1024*1024*16 );   }
       if (j==5) {printf("PCM=%d, Num of channel=%d",  get[0]+get[1]*256,  get[2]+get[3]*256 );   }
@@ -37,7 +37,7 @@ int  main(int argc ,  char **argv )
       if (j==7) {printf("byte rate=%d", 
                                        get[0]+get[1]*256+get[2]*65536+get[3]*1024*1024*16 );   }
       if (j==8) {printf("bits per sample=%d",  get[2]+get[3]*256 );   }
-      if (j==10) {printf("File size=%d",  get[0]+get[1]*256+get[2]*65536+get[3]*1024*1024*16 );   }
+      if (j==10) {printf("audio number of byte=%d",  get[0]+get[1]*256+get[2]*65536+get[3]*1024*1024*16 );   }
       printf("\n");
     }
       
