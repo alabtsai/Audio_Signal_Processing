@@ -48,8 +48,9 @@ int  main(int argc ,  char **argv )
      for (i=0;i<10000000;i++) {
       tt=fread(get, 1,2,filebmp);  
       if (tt==2){
-	 if (i<=5) printf("%02x  %02x %5d %5d\n",get[0],get[1],get[0],get[1]);
          sample=get[0]+get[1]*256 ; // readin 16 bits
+	 if (i<=15) {printf("%02x  %02x %5d %5d ---> ",get[0],get[1],get[0],get[1]);
+		    printf("%5d\n",sample);}
          fprintf(fout,  "%17.10f %d\n", t,sample);    
          t=t+delta;}
       else {printf("total readin %ld data !! each data is two bytes !! \n",i ); 
